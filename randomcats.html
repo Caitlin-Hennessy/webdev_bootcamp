@@ -1,0 +1,33 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+  </head>
+
+  <body>
+	<div>
+		<img 
+			style="width:300px;" 
+			src="https://icatcare.org/app/uploads/2018/07/Thinking-of-getting-a-cat.png" 
+			alt="random picture of a cat"></img>
+	</div>
+	<div>
+		<button>Random cat</button>
+	</div>
+	<script 
+		src="http://code.jquery.com/jquery-3.5.0.js" 
+		integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" 
+		crossorigin="anonymous"></script>
+	<script>
+		$("button").click(() => {
+			$.getJSON("http://aws.random.cat/meow")
+			.done((res) => {
+				console.log(res.file);
+				$("img").attr("src", res.file);
+			})
+			.fail(() => {
+				console.log("error");
+			});
+		});
+	</script>
+  </body>
+</html>

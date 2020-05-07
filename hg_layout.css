@@ -1,0 +1,95 @@
+body {
+  display: flex;
+  flex-direction: column;
+  height: 600px;
+  /* Solution: min-height */
+  background: gray;
+  font-family: Helvetica;
+}
+
+/* 
+Solution: to avoid repeated css, 
+margin, paddings, border-radius go in:
+main > *, header, footer {}
+*/
+
+header {
+  background: #00e6ac;
+  flex-basis: 10%;
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+  align-items: center;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  padding: 5px;
+}
+
+header a {
+  text-decoration: none;
+}
+
+main {
+  background: transparent;
+  flex-basis: 80%;
+  /* flex-grow: 1; don't need this*/
+  display: flex;
+}
+
+/* Don't forget flex shorthand: <grow> <shrink> <basis> */
+article {
+  flex-basis: 60%;
+  order: 2;
+  border-radius: 5px;
+  background: white;
+  margin: 0 5px 0 5px;
+  padding: 5px;
+}
+
+nav {
+  flex-basis: 20%;
+  order: 1;
+  border-radius: 5px;
+  background: lightgray;
+  padding: 5px;
+}
+
+aside {
+  flex-basis: 20%;
+  order: 3;
+  border-radius: 5px;
+  background: skyblue;
+  padding: 5px;
+}
+
+footer {
+  background: #00e6ac;
+  flex-basis: 10%;
+  flex-grow: 1;
+  border-radius: 5px;
+  margin-top: 5px;
+  padding: 5px;
+}
+
+@media screen and (max-width: 640px) {
+  main {
+    flex-direction: column;
+  }
+
+  nav {
+    order: 2;
+    margin: 5px 0 5px 0;
+    flex-basis: 10%;
+  }
+
+  aside {
+    order: 3; /*Don't need to repeat this*/
+    flex-basis: 10%;
+  }
+
+  article {
+    order: 1;
+    margin: 0;
+    flex-basis: 80%;
+  }
+}

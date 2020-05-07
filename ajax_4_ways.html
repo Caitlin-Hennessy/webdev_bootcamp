@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+  </head>
+
+  <body>
+    <h1>Ron Swanson Quote Generator</h1>
+    <p>(4 ways of writing AJAX requests)</p>
+    <section class="container">
+      <button id="xhr">XHR</button>
+      <button id="fetch">Fetch</button>
+      <button id="jquery">jQuery</button>
+      <button id="axios">Axios</button>
+    </section>
+    <p id="quote">Quote Goes Here...</p>
+
+    <script
+      src="http://code.jquery.com/jquery-3.5.0.js"
+      integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc="
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      var url = "https://ron-swanson-quotes.herokuapp.com/v2/quotes";
+
+      /* XHR */
+      document.querySelector("#xhr").addEventListener("click", () => {
+        var xhr = new XMLHttpRequest();
+
+        xhr.onreadystatechange = () => {
+          if (xhr.readyState == 4) {
+            if (xhr.status == 200) {
+              console.log(xhr.responseText);
+              document.querySelector("#quote").innerHTML = JSON.parse(
+                xhr.responseText
+              )[0];
+            } else {
+              console.log("There was a problem");
+            }
+          }
+        };
+        xhr.open("GET", url);
+        xhr.send();
+      });
+
+      /* FETCH */
+      document.querySelector("#fetch").addEventListener("click", () => {
+        fetch(url)
+          .then((res) => {
+            res.json().then((data) => {
+              document.querySelector("#quote").innerText = data[0];
+            });
+          })
+          .catch((err) => console.log(err));
+      });
+
+      /* jQuery */
+      $("#jquery").click(() => {
+        $.getJSON(url)
+          .done((res) => {
+            $("#quote").text(res);
+          })
+          .fail(() => {
+            console.log("There was a problem");
+          });
+      });
+
+      /* Axios */
+      document.querySelector("#axios").addEventListener("click", () => {
+        axios
+          .get(url)
+          .then(
+            (res) => (document.querySelector("#quote").innerHTML = res.data[0])
+          )
+          .catch((err) => console.log(err));
+      });
+    </script>
+  </body>
+</html>
