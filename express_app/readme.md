@@ -1,8 +1,8 @@
 ###TODO list app
 
 To run:
-mongo --dbpath ~/data.db
-node index.js
+mongod --dbpath ~/data.db
+nodemon index.js
 
 express_app/index.js: main entrypoint/server
 
@@ -11,3 +11,11 @@ models/todo.js: defines schema
 
 routes/todo.js: creates router, maps paths to helper functions
 helpers/todo.js: implements helper functions
+
+API
+GET /api/todos -> list all todos
+POST /api/todos {"name": "thing to do"} -> create new todo
+(use body/x-www-form-urlencoded w/key & value)
+GET /api/todos/todoId -> get one todo
+PUT /api/todos/todoId {"fieldToUpdate": "updatedValue"} -> update one todo
+DELETE /api/todos/todoId -> delete todo
