@@ -7,9 +7,15 @@ $(document).ready(function () {
     }
   });
 
-  // this doesn't work
-  $(".list").on("click", "li span", function () {
+  // have to use li span not just span
+  // can't use arrow notation
+  $(".list").on("click", "li span", function (e) {
+    e.stopPropagation();
     removeTodo($(this).parent());
+  });
+
+  $(".list").on("click", "li", function () {
+    updateTodo($(this));
   });
 });
 
@@ -20,6 +26,7 @@ function addTodos(todos) {
 function addTodo(todo) {
   var newTodo = $("<li>" + todo.name + "<span>X</span></li>");
   newTodo.data("id", todo._id);
+  newTodo.data("completed", todo.completed);
   newTodo.addClass("task");
   if (todo.completed) {
     newTodo.addClass("done");
@@ -46,4 +53,18 @@ function removeTodo(todo) {
   })
     .then(() => todo.remove())
     .catch(console.log);
+}
+
+function updateTodo(todo) {
+  var updateUrl = "/api/todos/" + todo.data("id");
+  var isDone = todo.data("completed");
+  var updateData = { completed: !isDone };
+  $.ajax({
+    method: "PUT",
+    url: updateUrl,
+    data: updateData,
+  }).then((updatedTodo) => {
+    todo.toggleClass("done");
+    todo.data("completed", !isDone);
+  });
 }
