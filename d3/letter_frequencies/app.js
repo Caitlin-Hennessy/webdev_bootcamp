@@ -18,15 +18,28 @@ d3.select("form").on("submit", () => {
     letterCountsArr.push({ letter, count });
   }
 
-  d3.select("#letters")
-    .selectAll("div")
+  // Pure D3 approach
+  // d3.select("#letters")
+  //   .selectAll("div")
+  //   .data(letterCountsArr)
+  //   .enter()
+  //   .append("div")
+  //   .classed("letter", true)
+  //   .style("width", "20px")
+  //   .style("height", (o) => o.count * 20 + "px")
+  //   .text((o) => o.letter);
+
+  // SVG approach
+  d3.select("svg")
+    .selectAll("rect")
     .data(letterCountsArr)
     .enter()
-    .append("div")
-    .classed("letter", true)
-    .style("width", "20px")
-    .style("height", (o) => o.count * 20 + "px")
-    .text((o) => o.letter);
+    .append("rect")
+    .attr("width", 20)
+    .attr("height", (o) => o.count * 20)
+    .attr("x", (d, i) => 25 * i)
+    .attr("y", (d, i) => 150 - d.count * 20)
+    .attr("fill", "purple");
 });
 
 d3.select("#reset").on("click", () => {

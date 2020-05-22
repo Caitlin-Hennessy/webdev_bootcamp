@@ -1,0 +1,34 @@
+svg = scalable vector graphics
+jpg, png etc are raster (pixel) based
+zooming in on raster image makes is pixellated/grainy
+
+<svg> tag defines element
+
+<line x1= y1= etc stroke-width="5px" stroke="blue"></line>
+y-axis is negative like most pixel coordinate systems
+
+<rect x="100" y="50" height="200" fill="red" />
+rx, ry = round corners
+
+<polygon points="x,y x,y x,y" fill= etc />
+
+<text>
+text-anchor = middle, end, etc (css)
+
+paths
+ppl use programs to draw SVGs, then export paths bc complicated 
+d = "M400 100
+L500 300..."
+M = move L = line
+uppercase = absolute location
+lowercase = relative " "
+h = horizontal line 
+
+
+things drawn later are on top
+
+?? styles in css vs svg element
+
+Note: if load variable A from A.js and also load script B.js, can access A in B.js
+
+?? TODO understand/more practice with D3 update pattern
