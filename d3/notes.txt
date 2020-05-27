@@ -2,6 +2,9 @@ svg = scalable vector graphics
 jpg, png etc are raster (pixel) based
 zooming in on raster image makes is pixellated/grainy
 
+rasters good for photos bc so detailed
+vectors good for logos and graphics
+
 <svg> tag defines element
 
 <line x1= y1= etc stroke-width="5px" stroke="blue"></line>
