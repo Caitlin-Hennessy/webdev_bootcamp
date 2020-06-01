@@ -11,3 +11,7 @@ img {
 button {
   margin: 20px;
 }
+
+body {
+  background-image: url("confetti.gif");
+}
