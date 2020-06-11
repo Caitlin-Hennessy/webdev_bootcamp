@@ -1,0 +1,48 @@
+.main {
+  display: flex;
+  height: 400px;
+}
+
+i {
+  padding: 20px;
+}
+
+.page1,
+.page4 {
+  padding: 50px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.page1 .row,
+.page2,
+.page3,
+.page4 .row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.page2,
+.page3 {
+  padding: 50px;
+  background-image: url("./randomdogs/confetti.gif");
+}
+
+button {
+  border: none;
+  background-color: transparent;
+}
+
+button:hover {
+  background-color: #ccc;
+  opacity: 50%;
+  border-radius: 20px;
+}
+
+button:active {
+  border: none;
+  outline: 0;
+  background-color: transparent;
+}

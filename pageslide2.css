@@ -1,0 +1,74 @@
+.blue {
+  background: #1c94c3;
+}
+
+.green {
+  background: #0eae6c;
+}
+
+.red {
+  background-image: url("./randomdogs/confetti.gif");
+}
+
+.yellow {
+  background: #ffeb3b;
+}
+
+.purple {
+  background: #673ab7;
+}
+
+.orange {
+  background: #ff9800;
+}
+
+.brown {
+  background: #795548;
+}
+
+body {
+  margin: 0;
+}
+
+.page {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+/* * {
+  border: 1px solid black;
+} */
+
+.page1,
+.page4 {
+  padding: 50px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+i {
+  padding: 20px;
+  margin: 5px;
+}
+
+i:hover {
+  background-color: #ccc;
+  opacity: 50%;
+  border-radius: 40px;
+  border: none;
+}
+
+ul {
+  flex-basis: 40%;
+  list-style: none;
+  text-align: center;
+}
+
+td {
+  padding: 0 10px 0 10px;
+}
+
+.stacked h3 {
+  text-align: center;
+}

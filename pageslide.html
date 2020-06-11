@@ -1,0 +1,80 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <script
+      src="https://kit.fontawesome.com/bf368f505d.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="pageslide.css" />
+  </head>
+
+  <body>
+    <div class="main">
+      <div id="page1" class="page1">
+        <h3>Celebrating UO Shining Stars</h3>
+        <div class="row">
+          <img src="shine-star-clipart-1.jpg" />
+          <button onClick="showMiddlePage()">
+            <i class="fas fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+      <div id="page2" class="page2" style="display: none;">
+        <button onClick="showFirstPage()">
+          <i class="fas fa-arrow-left"></i>
+        </button>
+        <ul>
+          <li>Caitlin Hennessy</li>
+          <li>Caitlin Hennessy</li>
+          <li>Caitlin Hennessy</li>
+          <li>Caitlin Hennessy</li>
+          <li>Caitlin Hennessy</li>
+          <li>Caitlin Hennessy</li>
+        </ul>
+      </div>
+      <div id="page3" class="page3" style="display: none;">
+        <ul>
+          <li>Caitlin Hennessy</li>
+          <li>Caitlin Hennessy</li>
+          <li>Caitlin Hennessy</li>
+          <li>Caitlin Hennessy</li>
+          <li>Caitlin Hennessy</li>
+          <li>Caitlin Hennessy</li>
+        </ul>
+        <button onClick="showLastPage()">
+          <i class="fas fa-arrow-right"></i>
+        </button>
+      </div>
+
+      <div id="page4" class="page4" style="display: none;">
+        <h3>Go ducks</h3>
+        <div class="row">
+          <button onClick="showMiddlePage()">
+            <i class="fas fa-arrow-left"></i></button
+          ><img src="oregon.jpg" width="200px" />
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function showFirstPage() {
+        document.getElementById("page1").style.display = "flex";
+        document.getElementById("page2").style.display = "none";
+        document.getElementById("page3").style.display = "none";
+        document.getElementById("page4").style.display = "none";
+      }
+      function showMiddlePage() {
+        document.getElementById("page1").style.display = "none";
+        document.getElementById("page2").style.display = "flex";
+        document.getElementById("page3").style.display = "flex";
+        document.getElementById("page4").style.display = "none";
+      }
+      function showLastPage() {
+        document.getElementById("page1").style.display = "none";
+        document.getElementById("page2").style.display = "none";
+        document.getElementById("page3").style.display = "none";
+        document.getElementById("page4").style.display = "flex";
+      }
+    </script>
+  </body>
+</html>

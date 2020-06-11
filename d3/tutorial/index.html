@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+  </head>
+  <body>
+    <p>hai</p>
+    <p>hai</p>
+    <p>hai</p>
+    <script>
+      //   var data = [100, 200, 300];
+      //   d3.select("body")
+      //     .selectAll("p")
+      //     .data(data)
+      //     .text((d, i) => {
+      //       console.log(`d ${d}`);
+      //       console.log(`i ${i}`);
+      //       console.log(`this ${this}`);
+      //       return d;
+      //     });
+
+      d3.selectAll("p")
+        .on("mouseover", function () {
+          d3.select(this).style("background-color", "orange");
+        })
+        .on("mouseout", function () {
+          d3.select(this).style("background-color", "steelblue");
+        });
+    </script>
+  </body>
+</html>

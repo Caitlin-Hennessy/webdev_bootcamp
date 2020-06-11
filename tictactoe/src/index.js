@@ -1,16 +1,13 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
-// import RecipeApp from "./RecipeApp";
-// import RandomBoxes from "./RandomBoxes";
-// import TodoApp from "./TodoApp";
-//import MemoryGame from "./MemoryGame";
-import GuessTheFlag from "./GuessTheFlag";
+// import App from './App';
+import TicTacToe from "./TicTacToe";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <React.StrictMode>
-    <GuessTheFlag />
+    <TicTacToe />
   </React.StrictMode>,
   document.getElementById("root")
 );
