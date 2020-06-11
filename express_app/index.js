@@ -15,6 +15,8 @@ app.get("/", (req, res) => {
 // direct URLs ending in /api/todos to todoRoutes
 app.use("/api/todos", todoRoutes);
 
-app.listen(3000, () => {
-  console.log("app is running on 3000");
+var port = process.env.PORT || 3000;
+
+app.listen(port, () => {
+  console.log("app is running on " + port);
 });

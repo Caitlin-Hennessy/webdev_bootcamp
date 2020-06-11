@@ -5,28 +5,38 @@ const ACTIVE = 0;
 const WON = 1;
 const LOST = 2;
 
+//takeaways
+//bias towards making small composable components instead of renderButton() etc
+//click handlers should be named, e.g., onGuess instead of playAgain
+//this.state.visibleCountries[this.state.correctAnswer].name is bad - figure out
+//better way of storing data
+//ok to check if fields of "this.state" are undefined in render() to determine if componentDidMount()
+//AJAX calls have happened yet
+
 class GuessTheFlag extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      allStates: [],
-      visibleStates: [],
+      countries: [],
+      visibleCountries: [],
       selected: "",
       playingState: ACTIVE,
       correctAnswer: "",
     };
+    this.playAgain = this.playAgain.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   getFourStates() {
     //TODO?
-    if (this.state.allStates.length === 0) {
+    if (this.state.countries.length === 0) {
       return [];
     }
     var states = [];
     for (let _ = 0; _ < 4; ++_) {
       states.push(
-        this.state.allStates[
-          Math.floor(Math.random() * this.state.allStates.length)
+        this.state.countries[
+          Math.floor(Math.random() * this.state.countries.length)
         ]
       );
     }
@@ -41,9 +51,9 @@ class GuessTheFlag extends Component {
           return { name: country.name, flag: country.flag };
         })
       )
-      .then((allStates) => this.setState({ allStates }))
+      .then((countries) => this.setState({ countries }))
       .then(() => this.playAgain())
-      .catch((err) => console.log(err));
+      .catch(console.warn);
   }
 
   handleChange(e) {
@@ -55,7 +65,7 @@ class GuessTheFlag extends Component {
     var playingState;
     if (
       this.state.selected ===
-      this.state.visibleStates[this.state.correctAnswer].name
+      this.state.visibleCountries[this.state.correctAnswer].name
     ) {
       playingState = WON;
     } else {
@@ -65,11 +75,11 @@ class GuessTheFlag extends Component {
   }
 
   playAgain() {
-    var visibleStates = this.getFourStates();
+    var visibleCountries = this.getFourStates();
     var correctAnswer = Math.floor(Math.random(4));
     this.setState({
       playingState: ACTIVE,
-      visibleStates: visibleStates,
+      visibleCountries: visibleCountries,
       correctAnswer: correctAnswer,
     });
   }
@@ -87,20 +97,20 @@ class GuessTheFlag extends Component {
   }
 
   render() {
-    var [option1, option2, option3, option4] = this.state.visibleStates.map(
+    var [option1, option2, option3, option4] = this.state.visibleCountries.map(
       (v) => v.name
     );
 
     if (
-      this.state.allStates.length === 0 ||
-      this.state.visibleStates.length === 0
+      this.state.countries.length === 0 ||
+      this.state.visibleCountries.length === 0
     ) {
       //component hasn't mounted yet
       return <div></div>;
     }
     const jsx = {
       0: (
-        <form onSubmit={this.handleSubmit.bind(this)}>
+        <form onSubmit={this.handleSubmit}>
           {this.renderButton(option1)}
           {this.renderButton(option2)}
           {this.renderButton(option3)}
@@ -111,14 +121,14 @@ class GuessTheFlag extends Component {
       1: (
         <h2>
           CORRECT!
-          <button onClick={this.playAgain.bind(this)}>Play again</button>
+          <button onClick={this.playAgain}>Play again</button>
         </h2>
       ),
       2: (
         <h2>
           WRONG! Correct answer was{" "}
-          {this.state.visibleStates[this.state.correctAnswer].name}
-          <button onClick={this.playAgain.bind(this)}>Play again</button>
+          {this.state.visibleCountries[this.state.correctAnswer].name}
+          <button onClick={this.playAgain}>Play again</button>
         </h2>
       ),
     }[this.state.playingState];
@@ -128,7 +138,7 @@ class GuessTheFlag extends Component {
         {jsx}
         <img
           width={300}
-          src={this.state.visibleStates[this.state.correctAnswer].flag}
+          src={this.state.visibleCountries[this.state.correctAnswer].flag}
           alt="a nice big flag"
         ></img>
       </div>

@@ -3,6 +3,7 @@
 To run:
 mongod --dbpath ~/data.db
 nodemon index.js
+open localhost:3000 in browser
 
 express_app/index.js: main entrypoint/server
 
